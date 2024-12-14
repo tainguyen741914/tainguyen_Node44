@@ -2,16 +2,20 @@
 import express from "express";
 import pool from "./db.js";
 import { OK, INTERNAL_SERVER } from "./const.js";
-import rootRouter from "./src/routes/root.router.js";
+import rootRoutes from "./src/routes/root.router.js";
+import cors from "cors";
 
 // B2 : tạo object express
 const app = express();
 
 // thêm middleware để để đọc data json
 app.use(express.json());
-
+app.use("/", rootRoutes);
 // import rootRouter
-app.use(rootRouter);
+app.use(rootRoutes);
+
+// thêm middleware cors để FE có thể call API tới BE
+app.use(cors());
 
 //B3 : define port cho BE chạy
 // params 1 : define port BE

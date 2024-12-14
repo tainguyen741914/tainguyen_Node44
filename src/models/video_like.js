@@ -1,7 +1,7 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class like_res extends Model {
+export default class video_like extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
     like_id: {
@@ -18,21 +18,25 @@ export default class like_res extends Model {
         key: 'user_id'
       }
     },
-    res_id: {
+    video_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'restaurant',
-        key: 'res_id'
+        model: 'video',
+        key: 'video_id'
       }
     },
-    date_like: {
+    date_create: {
       type: DataTypes.DATE,
+      allowNull: true
+    },
+    dis_like: {
+      type: DataTypes.BOOLEAN,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'like_res',
+    tableName: 'video_like',
     timestamps: false,
     indexes: [
       {
@@ -51,10 +55,10 @@ export default class like_res extends Model {
         ]
       },
       {
-        name: "res_id",
+        name: "video_id",
         using: "BTREE",
         fields: [
-          { name: "res_id" },
+          { name: "video_id" },
         ]
       },
     ]

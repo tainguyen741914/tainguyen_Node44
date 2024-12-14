@@ -1,10 +1,12 @@
 import express from "express";
-import userRouter from "./user.router.js";
+import userRoutes from "./user.router.js";
+import videoRoutes from "./video.router.js";
 
 // tạo object router tổng
-const rootRouter = express.Router();
+const rootRoutes = express.Router();
 
-rootRouter.use("/users", userRouter);
+rootRoutes.use("/users", userRoutes);
+rootRoutes.use("/videos", videoRoutes);
 
 // export rootRouter cho file index.js dùng
-export default rootRouter;
+export default rootRoutes;

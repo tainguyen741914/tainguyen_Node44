@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 
 const sequelize = new Sequelize(
-  "node44", // tên database
+  "node44_youtube", // tên database
   "root", // tên user
   "123456", // password user
   {
